@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+</head>
+<body>
+
+<h1>Student Grade Calculator</h1>
+
+<label for="subject1">Subject 1:</label>
+<input type="number" id="subject1" min="0" max="100" required>
+<br>
+
+<label for="subject2">Subject 2:</label>
+<input type="number" id="subject2" min="0" max="100" required>
+<br>
+
+<label for="subject3">Subject 3:</label>
+<input type="number" id="subject3" min="0" max="100" required>
+<br>
+
+<label for="subject4">Subject 4:</label>
+<input type="number" id="subject4" min="0" max="100" required>
+<br>
+
+<label for="subject5">Subject 5:</label>
+<input type="number" id="subject5" min="0" max="100" required>
+<br>
+
+<button onclick="calculateGrade()">Calculate Grade</button>
+
+<p id="result"></p>
+
+<script>
+    function calculateGrade() {
+        // Получаем значения оценок из полей ввода
+        var subject1 = parseFloat(document.getElementById('subject1').value);
+        var subject2 = parseFloat(document.getElementById('subject2').value);
+        var subject3 = parseFloat(document.getElementById('subject3').value);
+        var subject4 = parseFloat(document.getElementById('subject4').value);
+        var subject5 = parseFloat(document.getElementById('subject5').value);
+
+        // Проверяем, чтобы все оценки были введены
+        if (isNaN(subject1) || isNaN(subject2) || isNaN(subject3) || isNaN(subject4) || isNaN(subject5)) {
+            alert('Please enter all subject grades.');
+            return;
+        }
+
+        // Вычисляем средний балл
+        var average = (subject1 + subject2 + subject3 + subject4 + subject5) / 5;
+
+        // Определяем оценку на основе среднего балла
+        var grade;
+        if (average >= 90) {
+            grade = 'A';
+        } else if (average >= 80) {
+            grade = 'B';
+        } else if (average >= 70) {
+            grade = 'C';
+        } else if (average >= 60) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+
+        // Выводим результат
+        document.getElementById('result').innerHTML = 'Your average grade is: ' + average.toFixed(2) + '<br>Your grade is: ' + grade;
+    }
+</script>
+
+</body>
+</html>
